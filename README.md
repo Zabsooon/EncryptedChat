@@ -5,20 +5,30 @@
 
 To build the EncryptedChat we are using Conan and cmake:
 
-There are two ways to build this project, we will build it locally, so you are going to need Qt installed on your system
+If you don't have conan installed you can do it by using pip:
+```
+$ pip install conan
+```
 
-To build the project run this commands:
+You can check what packages we use in file CMakeLists.txt and also what Conan installs in conanfile.py.
+
+To build the project you need to execute this commands:
 
 ```
-$ mkdir build
-$ cmake -S. -Bbuild
+$ conan install conanfile.py --build=missing
 $ cd build
+```
+
+If you want to build release version execute:
+```
+$ cmake .. -DCMAKE_TOOLCHAIN_FILE=./Release/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+```
+
+By now you should have generated Makefile, now you just need to execute:
+```
+$ cmake --build .
+```
+OR
+```
 $ make
 ```
-
-By now you should have executable file
-
-
-Later on we will try to automate that process later or wait for conan-team to fix it...
-But for now we have to work on it locally and hope for the best...
-
