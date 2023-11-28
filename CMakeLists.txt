@@ -11,7 +11,10 @@ find_package(glfw3 CONFIG REQUIRED)
 find_package(OpenSSL CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME}
-    app/main.cpp
+    app/exampleMain.cpp
+    src/gui/UseImGui.hpp
+    src/gui/UseImGui.cpp
+
     src/gui/bindings/imgui_impl_glfw.cpp
     src/gui/bindings/imgui_impl_opengl3.cpp
     include/gui/bindings/imgui_impl_glfw.h
