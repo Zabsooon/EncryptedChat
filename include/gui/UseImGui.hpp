@@ -1,8 +1,8 @@
 #pragma once
 
 #include <imgui.h>
-#include "../include/gui/bindings/imgui_impl_glfw.h"
-#include "../include/gui/bindings/imgui_impl_opengl3.h"
+#include "bindings/imgui_impl_glfw.h"
+#include "bindings/imgui_impl_opengl3.h"
 #include <stdio.h>
 
 #define GL_SILENCE_DEPRACATION
