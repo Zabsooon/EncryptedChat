@@ -1,4 +1,8 @@
-#include "../src/gui/UseImGui.hpp"
+#include "../include/gui/UseImGui.hpp"
+#include "../include/networking/TcpServer.hpp"
+#include "../include/networking/TcpClient.hpp"
+#include <asio.hpp>
+#include <iostream>
 
 class CustomImGui : public UseImGui
 {
@@ -7,7 +11,6 @@ public:
     {
         // render your GUI
         static float f = 0.0f;
-        static int counter = 0;
 
         ImGui::Begin("CustomImGui Hello, world!");
         ImGui::Text("This is some useful text.");
@@ -15,10 +18,21 @@ public:
 
         bool clear_color_changed = ImGui::ColorEdit3("clear color", (float*)clear_color);
 
-        if(ImGui::Button("Button"))
-            counter++;
+        asio::io_context io_context;
+
+        if(ImGui::Button("Start server"))
+        {
+            TcpServer server(io_context);
+            std::cout << "Server started (chyba XD)" << std::endl;
+        }
+
+        if(ImGui::Button("Connect to server"))
+        {
+            TcpClient client(io_context);
+            client.StartConnection();
+        }
         ImGui::SameLine();
-        ImGui::Text("counter = %d", counter);
+        ImGui::Text("counter = %d", 0);
         ImGui::Text("Application avarage %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
         ImGui::End();
 

@@ -12,9 +12,16 @@ find_package(OpenSSL CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME}
     app/exampleMain.cpp
-    src/gui/UseImGui.hpp
-    src/gui/UseImGui.cpp
 
+    include/networking/TcpClient.hpp
+    include/networking/TcpConnection.hpp
+    include/networking/TcpServer.hpp
+    src/networking/TcpClient.cpp
+    src/networking/TcpConnection.cpp
+    src/networking/TcpServer.cpp
+
+    include/gui/UseImGui.hpp
+    src/gui/UseImGui.cpp
     src/gui/bindings/imgui_impl_glfw.cpp
     src/gui/bindings/imgui_impl_opengl3.cpp
     include/gui/bindings/imgui_impl_glfw.h
